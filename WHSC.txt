@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Problem1>
+  <Metadata>
+    <Authority>West Hartford Service Center</Authority>
+    <Variables>2</Variables>
+    <Constraints>2</Constraints>
+    <Variable1>small vans</Variable1>
+    <Variable2>large vans</Variable2>
+    <OFVerb>carry</OFVerb>
+    <VariableVerb>buy</VariableVerb>
+  </Metadata>
+  <Row>
+    <Name>initial purchase cost</Name>
+    <Variable1>10000</Variable1>
+    <Variable2>20000</Variable2>
+    <Type>LE</Type>
+    <RHS>100000</RHS>
+  </Row>
+  <Row>
+    <Name>monthly maintenance cost</Name>
+    <Variable1>100</Variable1>
+    <Variable2>75</Variable2>
+    <Type>LE</Type>
+    <RHS>500</RHS>
+  </Row>
+  <Row>
+    <Name>passenger</Name>
+    <Variable1>7</Variable1>
+    <Variable2>15</Variable2>
+    <Type>MAX</Type>
+    <RHS>0</RHS>
+  </Row>
+</Problem1>
