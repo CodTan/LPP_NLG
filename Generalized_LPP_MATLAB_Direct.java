@@ -315,7 +315,7 @@ public class Generalized_LPP_MATLAB_Direct {
 			}
 			// System.out.println(ExitFlag_AL);
 
-			ArrayList<Integer> ind_Var = new ArrayList<Integer>();
+			ArrayList<Integer> ind_Var = new ArrayList<Integer>(); // picking out individualvalues of the variables in a sorted manner
 			int b;
 
 			for (int a = 0; a < num_of_Variables; a++) {
