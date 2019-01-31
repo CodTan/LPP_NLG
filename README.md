@@ -46,7 +46,37 @@ exitflag // reaspn of termination of program
 resultfile // file storing the values of the result
 ```
 ### 3. LPP_NLG_NewVal.m
-This is the MATLAB script for the fucntion to receive data from the JAVA program to solve LPP in question with new solution values supplied by the user for interactivity.
+This is the MATLAB script for the function to receive data from the JAVA program to solve LPP in question with new solution values supplied by the user for interactivity.
 The script takes in the `new_Solution` and solves the LPP with these values. It saves the result in a resultfile specified at the end of the script.
 ### 4. con2vert.m, lcon2vert.m, vert2lcon.m
 These are MATLAB scripts for functions used to sort the corner points of the LPP in the above MATLAB scripts. These are not required individually.
+### 5. WHSC.txt
+This is a sample .txt file including the XML structure of the LPP given below:
+```
+The West Hartford Senior Center is trying to establish a transportation system of small and large vans. It can spend no more than $100,000 for both sizes of vehicles and no more than $500 per month for maintenance. The WHSC can purchase a small van, which carries up to 7 passengers, for $10,000 and maintain it for $100 per month. The large vans, which caryy up to 15 passengers, cost $20,000 each and can be maintained for $75 per month. How many of each type of van should they purchase if they want to maximize the number of passengers?
+```
+The XML structure is defined below:
+```
+<Problem1>
+    <Metadata> //contains all descriptive information about the LPP required to generate the explanations
+        <Authority>...</Authority> // organization or person who is incharge of the problem, who requires the problem to be solved
+        <Variables>...</Variables> // number of variables in the LPP
+        <Constraints>...</Constraints> // number of constraints in the LPP
+        <Variablex>...</Variablex> // name of the xth variable
+        <OFVerb>...</OFVerb> // verb of the objective function, i.e. the 'doing' word in the objective function
+        <VariableVerb>...</VariableVerb> //verb related to the variables, i.e. the 'doing' word for the variables
+    </Metadata>
+    <Row> // information about all constraints
+        <Name>...</Name> // name of the resource on which the constraint is put
+        <Variablex>...</Variablex> // coefficient of xth variable in this constraint
+        <Type>...</Type> // type of the constraint from any of the following: *less than*, *greater than*, *less than equal to*, *greater than equal to* or *equal to*
+        <RHS>...</RHS> // RHS of the constraints
+    </Row>
+    <Row> //last 'Row' element corresponds to the information about the objective function
+        <Name>...</Name> // name of the 'object' to be optimized
+        <Variablex>...</Variablex> // coefficient of xth variable in objective function
+        <Type>...</Type> // type of optimization: MIN or MAX
+        <RHS>...</RHS> // always 0 for an objective function
+    </Row>
+ </Problem1>
+```
