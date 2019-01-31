@@ -88,13 +88,20 @@ The XML structure is defined below:
 ```
 ### Sample explanation generated for the WHSC problem
 >West Hartford Service Center should buy no small vans and 5 large vans to carry 75 passengers. Suppose the authority decides to buy 2 small vans and 4 large vans then they would carry 74 passengers. However, if they buy 5 small vans and no large vans then they carry 35 passengers that is much less than the maximum passenger that they can carry. Therefore, West Hartford Service Center can carry maximum of 75 passengers.
-Do you want to try more values as solutions? (y/n) y
-These are the variables in your problem.
+
+>Do you want to try more values as solutions? (y/n) y
+
+>These are the variables in your problem.
 1. Small vans.
 2. Large vans.
-Enter the variable whose value you wish to change: 1
-Enter the new value: 2
-Considering that, West Hartford Service Center buys 2 small vans they will be able to carry 89 passengers. As a consequence, they can carry 14 more passengers when compared to the original value.
+
+>Enter the variable whose value you wish to change: 1
+
+>Enter the new value: 2
+
+>Considering that, West Hartford Service Center buys 2 small vans they will be able to carry 89 passengers. As a consequence, they can carry 14 more passengers when compared to the original value.
 However, the authority exceeds their initial purchase cost by 20000. Moreover, if they increase their monthly maintenance cost by 75 then they will be able to carry 14 more passengers.
-Do you want to try more values? (y/n) n
+
+>Do you want to try more values? (y/n) n
+
 Thank you!
