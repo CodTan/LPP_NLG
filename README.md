@@ -92,8 +92,8 @@ The XML structure is defined below:
 >Do you want to try more values as solutions? (y/n) y
 
 >These are the variables in your problem.
-1. Small vans.
-2. Large vans.
+>1. Small vans.
+>2. Large vans.
 
 >Enter the variable whose value you wish to change: 1
 
@@ -104,4 +104,4 @@ However, the authority exceeds their initial purchase cost by 20000. Moreover, 
 
 >Do you want to try more values? (y/n) n
 
-Thank you!
+>Thank you!
