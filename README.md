@@ -33,6 +33,8 @@ In the problem explanation part, one paragraoh is used to explain the the optima
 
 In the interactivity part, the program lets the user interact with it by letting the user try out new values as solutions for the LPP. The effect of these new values on the structure of the LPP are then explained using NLG. For this part, the program asks the user to input new values for the available variables in the problem. Once the user inputs these new values, theya re again sent to MATLAB throught the MATLAB function call to `LPP_NLG_NewVal.mat` which solves the LPP again with these new values.
 ### 2. LPP_NLG.m
+All MATLAB codes were written and executed in MATLAB R2017a.
+
 This is the MATLAB script for the function to receive data from the JAVA program to solve the LPP in question.
 
 The function receives the input parameters in String form which are eventually converted to numeric format in this MATLAB script. Following is the list of variables and functions used in this script.
