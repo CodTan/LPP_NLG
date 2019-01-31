@@ -53,7 +53,7 @@ function LPP_NLG(A_String,b_String,f_String,num_of_Variables,num_of_Constraints)
 
     Sorted_Vars = (Sorted_CornerPts([1:rows],[1:cols-1]));
 
-    [P,fval,exitflag] = linprog(f,A,b,Aeq,beq,lb);
+    [P,fval,exitflag] = linprog(f,A,b,Aeq,beq,lb); % solve the LPP
     P = (P);
     fval = (fval);
     exitflag = (exitflag);
