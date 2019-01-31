@@ -1,5 +1,5 @@
-import java.io.File;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File; // for JAVA I/O
+import javax.xml.parsers.DocumentBuilderFactory; // for parsing XML document
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 
-import simplenlg.framework.*;
+import simplenlg.framework.*; // for SimpleNLG API
 import simplenlg.lexicon.*;
 import simplenlg.realiser.english.*;
 import simplenlg.phrasespec.*;
@@ -19,12 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.Math;
 
-import com.mathworks.engine.*;
+import com.mathworks.engine.*; // to establish MATLAB connection
 
-import com.jmatio.io.*;
+import com.jmatio.io.*; // for JAVA-to-MATLAB interfacing
 import com.jmatio.types.*;
 
-import java.util.regex.*;
+import java.util.regex.*; // for REGEX parsing
 
 import matlabcontrol.*;
 
