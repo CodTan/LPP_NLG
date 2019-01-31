@@ -43,16 +43,16 @@ public class Generalized_LPP_MATLAB_Direct {
 			String name_of_Authority = null;
 			int num_of_Variables = 0;
 			int num_of_Constraints = 0;
-			String OFVerb = null;
-			String VariableVerb = null;
-			String var = "Variable";
+			String OFVerb = null; //objective function verb
+			String VariableVerb = null; //verb corresponding to the variables
+			String var = "Variable"; //number of the variable (prefix)
 
-			File inputFile = new File("E:\\Spain_2018\\SDC_Work\\Problems_LPP\\WHSC.txt");
+			File inputFile = new File("E:\\Spain_2018\\SDC_Work\\Problems_LPP\\WHSC.txt"); //path of XML structure of the problem in .txt file
 			
 //			File inputFile = null;
 			Scanner input = new Scanner(System.in);
 //			
-//			System.out.println("Enter the XML file (.txt format): ");
+//			System.out.println("Enter the XML file (.txt format): "); //in case the user wants to input his/her own XML structure
 //			String FileName = input.nextLine();
 //			inputFile = new File(FileName);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -60,7 +60,7 @@ public class Generalized_LPP_MATLAB_Direct {
 			Document doc = dBuilder.parse(inputFile);
 			doc.getDocumentElement().normalize();
 
-			NodeList nList = doc.getElementsByTagName("Metadata");
+			NodeList nList = doc.getElementsByTagName("Metadata"); //scan Metadata of the problem
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
@@ -108,17 +108,17 @@ public class Generalized_LPP_MATLAB_Direct {
 				}
 			}
 
-			nList = doc.getElementsByTagName("Row");
-			Float add_A;
-			Float add_b;
+			nList = doc.getElementsByTagName("Row"); //each row corresponds to the constraints, last one for objective function
+			Float add_A; //A = coefficient matrix for constraints
+			Float add_b; //RHS vector for constraints
 			String A_MATLAB = "[";
 			String b_MATLAB = "[";
-			String f_MATLAB = "[";
+			String f_MATLAB = "["; //f = coefficient vector for constraints
 
 			for (int tempo = 0; tempo < num_of_Variables; tempo++) { // tempo = no. of rows (variables)
 				for (int temp = 0; temp < nList.getLength(); temp++) { // temp= no.of columns (constraints)
 					Node nNode = nList.item(temp);
-					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) { //get coefficient of variable
 
 						Element eElement = (Element) nNode;
 						var = var + String.valueOf(tempo + 1);
@@ -130,10 +130,10 @@ public class Generalized_LPP_MATLAB_Direct {
 
 						if (temp != (nList.getLength() - 1)) {
 
-							A_MATLAB = A_MATLAB + add_A.toString() + ",";
+							A_MATLAB = A_MATLAB + add_A.toString() + ","; //create A matrix to be sent to MATLAB for evaluation
 
 						} else
-							f_MATLAB = f_MATLAB + add_A.toString() + ",";
+							f_MATLAB = f_MATLAB + add_A.toString() + ","; //create f vector to be sent to MATLAB for evaluation
 
 					}
 				}
@@ -159,20 +159,20 @@ public class Generalized_LPP_MATLAB_Direct {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 
-					Name_list.add(eElement.getElementsByTagName("Name").item(0).getTextContent());
+					Name_list.add(eElement.getElementsByTagName("Name").item(0).getTextContent()); // name of resource corresponding to the constraint
 					// System.out.println("\n Name : " +
 					// eElement.getElementsByTagName("Name").item(0).getTextContent());
 
-					Type_list.add(eElement.getElementsByTagName("Type").item(0).getTextContent());
+					Type_list.add(eElement.getElementsByTagName("Type").item(0).getTextContent()); // type of constraint: less than, greater than etc.
 					// System.out.println("Type : " +
 					// eElement.getElementsByTagName("Type").item(0).getTextContent());
 
-					add_b = Float.parseFloat(eElement.getElementsByTagName("RHS").item(0).getTextContent());
+					add_b = Float.parseFloat(eElement.getElementsByTagName("RHS").item(0).getTextContent()); // RHS of constraint
 					RHS_list.add(add_b);
 
 					if (temp != (nList.getLength() - 1)) {
 
-						b_MATLAB = b_MATLAB + add_b.toString() + ";";
+						b_MATLAB = b_MATLAB + add_b.toString() + ";"; //create b vector to be sent to MATLAB for evaluation
 
 					}
 					// System.out.println("RHS : " +
@@ -189,7 +189,7 @@ public class Generalized_LPP_MATLAB_Direct {
 			// Solving using MATLAB (MATLABControl)
 			// ************************************************************************************************************************
 			
-			Object[] arr = new Object[5];
+			Object[] arr = new Object[5]; // create object array of all 'objects' of data related to the LPP to be sent to MATLAB for computation of the solution
 			
 			arr[0] = A_MATLAB;
 			arr[1] = b_MATLAB;
@@ -199,9 +199,9 @@ public class Generalized_LPP_MATLAB_Direct {
 			
 			MatlabProxyFactoryOptions options =  new MatlabProxyFactoryOptions.Builder().setUsePreviouslyControlledSession(true).build();
 			MatlabProxyFactory factory = new MatlabProxyFactory(options);
-	        MatlabProxy proxy = factory.getProxy();
+	        MatlabProxy proxy = factory.getProxy(); //establish connection with MATLAB
 	        
-	        proxy.returningFeval("LPP_NLG", 0, arr);        
+	        proxy.returningFeval("LPP_NLG", 0, arr);  //evaluate function on MATLAB
 	        
 //	        proxy.disconnect();			
 			
