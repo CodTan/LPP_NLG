@@ -201,7 +201,8 @@ public class Generalized_LPP_MATLAB_Direct {
 			MatlabProxyFactory factory = new MatlabProxyFactory(options);
 	        MatlabProxy proxy = factory.getProxy(); //establish connection with MATLAB
 	        
-	        proxy.returningFeval("LPP_NLG", 0, arr);  //evaluate function on MATLAB
+	        proxy.returningFeval("LPP_NLG", 0, arr);  //evaluate the LPP on MATLAB
+								
 	        
 //	        proxy.disconnect();			
 			
@@ -597,7 +598,7 @@ public class Generalized_LPP_MATLAB_Direct {
 			// ###############################################################################
 			
 			// *******************************************************************************
-			// INREACTIVITY BEGINS HERE
+			// INTERACTIVITY BEGINS HERE
 			// *******************************************************************************
 			
 			char que = 'y';
@@ -669,7 +670,7 @@ public class Generalized_LPP_MATLAB_Direct {
 					
 					// **************************************** RUN MATLAB WITH NEW VALUES *********************************************
 			        
-			        proxy.returningFeval("LPP_NLG_NewVal", 0, analysis_param);	        
+			        proxy.returningFeval("LPP_NLG_NewVal", 0, analysis_param);	// evaluate LPP with changed values        
 			        
 			        matfilereader = new MatFileReader("E:\\Spain_2018\\SDC_Work\\LPP_NewVal_result.mat");
 			        
