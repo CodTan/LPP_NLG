@@ -5,7 +5,7 @@ The repository LPP_NLG consists of code used to generate automatic explanations 
 #### A. Specifications
 The code was written and executed in Eclipse Oxygen.3.
 #### B. General overview
-This is the JAVA code to perform the entire task of automatic explanation generation using the SimpleNLG API. It's a simple program that reads the LPPs specified using an XML structure.
+This is the JAVA code to perform the entire task of automatic explanation generation using the [SimpleNLG API](https://github.com/simplenlg/simplenlg). It's a simple program that reads the LPPs specified using an XML structure.
 #### C. Inputs
 The program begins with taking the path of the input file which is the XML structure of the LPP in consideration. The path is either mentioned in the program or is given as an input to the program during runtime.
 #### D. Reading the XML file
@@ -27,3 +27,26 @@ The data obatined from the MATLAB result file is stored in `MLArrays`, which are
 The system uses the default lexicon of the SimpleNLG to realise the document. The final explanation generated are divided into 2 parts:  (1) problem explanation and (2) interactivity.
 In the problem explanation part, one paragraoh is used to explain the the optimal solution and the optimal values of the LPP just solved using MATLAB. It also considers the 2 more sub-optimal solutions and explains why the optimal solution is called so.
 In the interactivity part, the program lets the user interact with it by letting the user try out new values as solutions for the LPP. The effect of these new values on the structure of the LPP are then explained using NLG. For this part, the program asks the user to input new values for the available variables in the problem. Once the user inputs these new values, theya re again sent to MATLAB throught the MATLAB function call to `LPP_NLG_NewVal.mat` which solves the LPP again with these new values.
+### 2. LPP_NLG.m
+This is the MATLAB script for the function to receive data from the JAVA program to solve the LPP in question.
+The function receives the input parameters in String form which are eventually converted to numeric format in this MATLAB script. Following is the list of variables and functions used in this script.
+```
+A // an mxn matrix for coefficients of m variables and n constraints in the LPP of type 'less than equal to'
+b // an nx1 vector for RHS of coefficients of the LPP of type 'less than equal to'
+f // 1xm vector denoting coefficients of m variables in the objective function (typically minimization)
+lb // describes lower bound of the variables in the system
+Aeq // A matrix for all 'equal-to type' constraints
+beq // b vector for all 'equal-to type' constraints
+Solution_Set // list of all corner points of the LPP's polytope
+Sorted_solution // sorted list of corner points according to the objective function value at these points
+Sorted_Vars // variables sorted according to corner points
+P // 1xm vector containing optimal values of variables
+fval // optimal solution
+exitflag // reaspn of termination of program
+resultfile // file storing the values of the result
+```
+### 3. LPP_NLG_NewVal.m
+This is the MATLAB script for the fucntion to receive data from the JAVA program to solve LPP in question with new solution values supplied by the user for interactivity.
+The script takes in the `new_Solution` and solves the LPP with these values. It saves the result in a resultfile specified at the end of the script.
+### 4. con2vert.m, lcon2vert.m, vert2lcon.m
+These are MATLAB scripts for functions used to sort the corner points of the LPP in the above MATLAB scripts. These are not required individually.
