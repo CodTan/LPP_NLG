@@ -61,7 +61,7 @@ The script takes in the `new_Solution` and solves the LPP with these values. It 
 These are MATLAB scripts for functions used to sort the corner points of the LPP in the above MATLAB scripts. These are not required individually.
 ### 5. WHSC.txt
 This is a sample .txt file including the XML structure of the LPP given below:
-> The West Hartford Senior Center is trying to establish a transportation system of small and large vans. It can spend no more than $100,000 for both sizes of vehicles and no more than $500 per month for maintenance. The WHSC can purchase a small van, which carries up to 7 passengers, for $10,000 and maintain it for $100 per month. The large vans, which caryy up to 15 passengers, cost $20,000 each and can be maintained for $75 per month. How many of each type of van should they purchase if they want to maximize the number of passengers?
+> The West Hartford Senior Center is trying to establish a transportation system of small and large vans. It can spend no more than $100,000 for both sizes of vehicles and no more than $500 per month for maintenance. The WHSC can purchase a small van, which carries up to 7 passengers, for $10,000 and maintain it for $100 per month. The large vans, which carry up to 15 passengers, cost $20,000 each and can be maintained for $75 per month. How many of each type of van should they purchase if they want to maximize the number of passengers?
 
 The XML structure is defined below:
 ```
